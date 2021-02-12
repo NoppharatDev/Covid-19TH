@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานสถานการณ์ โควิด-19</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div class="container">
+
+
+    <div class="card card-body border-0 shadow mt-5 mb-4 px-4" style="border-radius: 20px">
+        <h3 class="my-2"><b>สถิติผู้ติดเชื้อโควิด-19 ในไทย</b></h3>
+        <p><b class="text-danger">ข้อมูลอัปเดตล่าสุด :</b> <a id="dataLast">-</a></p>
+        <div class="row">
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-6 mb-4">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #FFE589; color: #292b2c">
+                            <b>ติดเชื้อเพิ่มขึ้น</b>
+                            <h3 class="my-3"><b id="NewConfirmed">-</b></h3>
+                            <button class="btn btn-sm bg-white mx-5" style="border-radius: 30px" id="Confirmed">...</button>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-4">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #FF6F6F; color: #292b2c">
+                            <b>เสียชีวิต</b>
+                            <h3 class="my-3"><b id="NewDeaths">-</b></h3>
+                            <button class="btn btn-sm bg-white mx-5" style="border-radius: 30px" id="Deaths">...</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #74E8E8; color: #292b2c">
+                            <b>รักษาตัว</b>
+                            <h3 class="my-3"><b id="NewHospitalized">-</b></h3>
+                            <button class="btn btn-sm bg-white mx-5" style="border-radius: 30px" id="Hospitalized">...</button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #50CDA0; color: #292b2c">
+                            <b>หายเเล้ว</b>
+                            <h3 class="my-3"><b id="NewRecovered">-</b></h3>
+                            <button class="btn btn-sm bg-white mx-5" style="border-radius: 30px" id="Recovered">...</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="chart">
+                    <canvas id="myChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+            <div class="col-12 my-4"></div>
+            <h4><b>สถิติผู้ติดเชื้อโควิด-19 ในแต่ละจังหวัด</b></h4>
+            <div class="col-6">
+                <div class="tbHead mt-4">
+                    <div class="d-flex px-4">
+                        <div><b>จังหวัด</b></div>
+                        <div class="ms-auto"><b>ติดเชื้อสะสม</b></div>
+                    </div>
+                </div>
+                <div class="tbBody" id="tbBodyThai">-</div>
+            </div>
+            <div class="col-6">
+                <iframe
+                    class="mt-4"
+                    width="100%"
+                    height="500"
+                    src="https://covid19.th-stat.com/th/share/map"
+                    style="border-radius: 15px"
+                ></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="card card-body border-0 shadow mb-5 px-4" style="border-radius: 20px">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="my-2"><b>สถิติผู้ติดเชื้อโควิด-19 รายบุคคล</b></h3>
+                <p><b class="text-danger">อัปเดตล่าสุด :</b> <a id="dataLast">-</a></p>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #FF6F6F; color: #292b2c">
+                            <b>ชาย</b>
+                            <h3><b id="genderMale">-</b></h3>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="card card-body border-0 text-center" style="border-radius: 10px; background-color: #FFE589; color: #292b2c">
+                            <b>หญิง</b>
+                            <h3><b id="genderFemale">-</b></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="tbHead mt-4">
+                    <div class="d-flex px-4">
+                        <div style="width: 10%;"><b>ลำดับ</b></div>
+                        <div style="width: 30%;"><b>วันที่และเวลา</b></div>
+                        <div style="width: 10%;"><b>เพศ</b></div>
+                        <div style="width: 10%;"><b>อายุ</b></div>
+                        <div style="width: 20%;"><b>อำเภอ</b></div>
+                        <div style="width: 20%;"><b>จังหวัด</b></div>
+                    </div>
+                </div>
+                <div class="tbBody" id="tbBodyCase">-</div>
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-dark btn-block" id="myCheck" style="border-radius: 0 0 10px 10px;">แสดงเพิ่มเติม</button>
+        </div>
+    </div>
+
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap');
+
+* {
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    background-image: url(https://s.isanook.com/sr/0/images/news/events/covid19/bg-covid-stat.jpg);
+    background-color: rgb(107, 140, 168);
+}
+.bg-warning {
+    background-color: rgb(255, 229, 137);
+}
+
+.tbHead {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 15px 5px;
+    border-radius: 10px 10px 0 0;
+}
+.tbBody {
+    background-color: #EEE;
+    min-height: 450px;
+    max-height: 450px;
+    overflow-y: scroll;
+    border-radius: 0 0 10px 10px;
+}
