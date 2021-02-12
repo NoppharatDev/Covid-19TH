@@ -1,5 +1,3 @@
-
-// Thai
 fetch('https://covid19.th-stat.com/api/open/timeline')
 .then(
     response => response.json()
